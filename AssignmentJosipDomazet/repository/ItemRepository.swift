@@ -7,9 +7,9 @@
 
 import Foundation
 
-class CardRepository {
-    func fetchCards(page: Int, completion: @escaping ([Card]?, Error?) -> Void) {
-        guard let apiURL = URL(string: "https://api.magicthegathering.io/v1/cards?page=\(page)") else {
+class ItemRepository {
+    func fetchItems(completion: @escaping ([Item]?, Error?) -> Void) {
+        guard let apiURL = URL(string: "https://api.magicthegathering.io/v1/cards") else {
             completion(nil, (NSError(domain: "AppErrorDomain", code: 0, userInfo: nil)))
             return
         }
@@ -28,8 +28,8 @@ class CardRepository {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
-                let cards = response.cards
-                completion(cards, nil)
+                let items = response.items
+                completion(items, nil)
             } catch {
                 completion(nil, error)
             }
@@ -37,6 +37,6 @@ class CardRepository {
     }
     
     struct Response: Codable {
-        let cards: [Card]
+        let items: [Item]
     }
 }

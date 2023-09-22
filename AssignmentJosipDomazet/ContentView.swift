@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var viewModel: CardViewModel
+    @ObservedObject private var viewModel: ItemViewModel
     
-    init(viewModel: CardViewModel) {
+    init(viewModel: ItemViewModel) {
         self.viewModel = viewModel
     }
     
@@ -20,38 +20,38 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                if viewModel.pageNumber-1 != 0 {
-                    HStack {
-                        Text("Page \(viewModel.pageNumber - 1)")
-                            .font(.system(size: 12))
-                            .foregroundColor(.gray)
+        NavigationView { // Wrap your content in a NavigationView
+            VStack {
+                switch viewModel.viewState {
+                case .INITIAL:
+                    Text("Press the button to load cards.")
+                case .LOADING:
+                    ProgressView("Loading...")
+                case .ERROR(let errorMessage):
+                    errorWidget(errorMessage)
+                        .foregroundColor(.red)
+                case .SUCCESS(let items):
+                    List(items, id: \.id) { item in
+                        NavigationLink(destination: ItemDetailsView(item: item)) {
+                            Text(item.title)
+                        }
                     }
                 }
-            }
-            
-            switch viewModel.viewState {
-            case .INITIAL:
-                Text("Press the button to load cards.")
-            case .LOADING:
-                ProgressView("Loading...")
-            case .ERROR(let errorMessage):
-                errorWidget(errorMessage)
-                    .foregroundColor(.red)
-            case .SUCCESS(let cards):
-                ScrollView {
-                    Text(viewModel.combinedCardNames)
+                
+                Button(action: {
+                    viewModel.fetchItems()
+                }) {
+                    Text("Load Cards")
                 }
+                .disabled(viewModel.viewState == .LOADING)
             }
-            
-            Button(action: {
-                viewModel.loadCards()
-            }) {
-                Text("Load Cards")
-            }
-            .disabled(viewModel.viewState == .LOADING)
+            .navigationBarTitle("Item List") // Set the navigation bar title
         }
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(viewModel: ItemViewModel(repository: ItemRepository()))
+    }
+}

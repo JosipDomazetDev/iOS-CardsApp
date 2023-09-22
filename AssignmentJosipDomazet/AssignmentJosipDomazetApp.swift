@@ -11,7 +11,7 @@ import SwiftUI
 struct AssignmentJosipDomazetApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: CardViewModel(repository: CardRepository()))
+            ContentView(viewModel: ItemViewModel(repository: ItemRepository()))
         }
     }
 }
