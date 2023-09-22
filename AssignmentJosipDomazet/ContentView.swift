@@ -26,10 +26,7 @@ struct ContentView: View {
                     .foregroundColor(.red)
             case .SUCCESS(let cards):
                 ScrollView {
-                    ForEach(cards, id: \.id) { card in
-                        Text(card.name)
-                            .font(.headline)
-                    }
+                    Text(viewModel.combinedCardNames)
                 }
             }
 
