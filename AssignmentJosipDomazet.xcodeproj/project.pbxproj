@@ -69,7 +69,6 @@
 				CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */,
 				CEFF7BC52ABD6C92000BB0C8 /* Preview Content */,
 				CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */,
-				CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */,
 			);
 			path = AssignmentJosipDomazet;
 			sourceTree = "<group>";
@@ -101,6 +100,7 @@
 		CEFF7BD72ABD7583000BB0C8 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */,
 				CEFF7BD82ABD75AF000BB0C8 /* CardItem.swift */,
 			);
 			path = model;

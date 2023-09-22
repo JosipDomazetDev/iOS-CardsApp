@@ -12,5 +12,5 @@ struct Card: Identifiable, Codable, Equatable {
     let name: String
     let type: String
     let rarity: String
-    let colors: [String]
+    let colors: [String]?
 }

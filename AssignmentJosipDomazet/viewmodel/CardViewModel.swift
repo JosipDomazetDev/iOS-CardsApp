@@ -10,7 +10,8 @@ import Foundation
 class CardViewModel: ObservableObject {
     @Published var viewState: ViewState<[Card]> = .INITIAL
     @Published var combinedCardNames: String = ""
-    @Published var pageNumber: Int = 16
+    // 820 seems to be the last page as of now
+    @Published var pageNumber: Int = 1
     
     private let repository: CardRepository
     
@@ -40,22 +41,53 @@ class CardViewModel: ObservableObject {
                 self.pageNumber += 1
                 
                 // Check if fetched cards are empty and trigger a reload
-                // Only once tho to not cause a recursion by accident (if Magic API was to return an empty page again)
+                // Only once tho, to not cause a recursion by accident (if Magic API was to return an empty page again)
                 if (fetchedCards.isEmpty && !fromReload) {
                     self.reloadCards()
                 }
                 
                 
-                switch self.viewState {
-                case .SUCCESS(let cards):
-                    self.combinedCardNames = cards.map { $0.name }.joined(separator: "\n")
-                default:
-                    self.combinedCardNames = ""
-                }
+                self.combinedCardNames = self.buildCardString(cards: self.viewState)
             }
         }
     }
     
+    private func buildCardString(cards: ViewState<[Card]>) -> String {
+        var cardString = ""
+        
+        guard case .SUCCESS(let cardData) = cards else {
+            return cardString
+        }
+        
+        for card in cardData {
+            cardString += "\(card.name): \(card.type), \(card.rarity)"
+            
+            if let colors = card.colors, !colors.isEmpty {
+                cardString += ", "
+                let displayColors = self.getColorList(card: card)
+                cardString += displayColors.joined(separator: ", ")
+            }
+            
+            cardString += "\n"
+        }
+        
+        return cardString
+    }
+    
+ 
+    private func getColorList(card: Card) -> [String] {
+        let colorMapping: [String: String] = [
+            "W": "White",
+            "U": "Blue",
+            "B": "Black",
+            "R": "Red",
+            "G": "Green"
+        ]
+
+        return card.colors?.compactMap { colorMapping[$0] ?? $0 } ?? []
+    }
+    
+     
     private func reloadCards() {
         self.pageNumber = 1
         self.loadCards(fromReload: true)
