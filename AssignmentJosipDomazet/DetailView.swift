@@ -21,4 +21,3 @@ struct ItemDetailsView: View { // Make sure ItemDetailsView conforms to View
     }
 }
 
-// Rest of your code...

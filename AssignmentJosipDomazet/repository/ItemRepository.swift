@@ -31,12 +31,9 @@ class ItemRepository {
                 let items = response.items
                 completion(items, nil)
             } catch {
+                debugPrint(error)
                 completion(nil, error)
             }
         }.resume()
-    }
-    
-    struct Response: Codable {
-        let items: [Item]
     }
 }
