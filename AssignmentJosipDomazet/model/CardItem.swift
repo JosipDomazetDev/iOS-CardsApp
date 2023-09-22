@@ -10,5 +10,7 @@ import Foundation
 struct Card: Identifiable, Codable, Equatable {
     let id = UUID()
     let name: String
-    // Add other properties needed for display
+    let type: String
+    let rarity: String
+    let colors: [String]
 }
