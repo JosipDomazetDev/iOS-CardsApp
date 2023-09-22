@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  AssignmentJosipDomazet
-//
-//  Created by user on 22.09.23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -20,11 +13,11 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView { // Wrap your content in a NavigationView
+        NavigationView {
             VStack {
                 switch viewModel.viewState {
                 case .INITIAL:
-                    Text("Press the button to load cards.")
+                    Text("Pull down to load cards.")
                 case .LOADING:
                     ProgressView("Loading...")
                 case .ERROR(let errorMessage):
@@ -37,15 +30,14 @@ struct ContentView: View {
                         }
                     }
                 }
-                
-                Button(action: {
-                    viewModel.fetchItems()
-                }) {
-                    Text("Load Cards")
-                }
-                .disabled(viewModel.viewState == .LOADING)
             }
-            .navigationBarTitle("Item List") // Set the navigation bar title
+            .navigationBarTitle("Item List")
+        }
+        .onAppear {
+            viewModel.fetchItems()
+        }
+        .refreshable {
+            viewModel.reloadItems()
         }
     }
 }

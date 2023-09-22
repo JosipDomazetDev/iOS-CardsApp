@@ -41,7 +41,7 @@ class ItemViewModel: ObservableObject {
 
  
      
-    private func reloadCards() {
+    func reloadItems() {
         self.fetchItems()
     }
 }
