@@ -11,6 +11,11 @@
 		CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */; };
 		CEFF7BC42ABD6C92000BB0C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */; };
 		CEFF7BC72ABD6C92000BB0C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFF7BC62ABD6C92000BB0C8 /* Preview Assets.xcassets */; };
+		CEFF7BCE2ABD6F5A000BB0C8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */; };
+		CEFF7BD12ABD70EE000BB0C8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD02ABD70EE000BB0C8 /* CardViewModel.swift */; };
+		CEFF7BD42ABD7188000BB0C8 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD32ABD7188000BB0C8 /* CardRepository.swift */; };
+		CEFF7BD62ABD71DE000BB0C8 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */; };
+		CEFF7BD92ABD75AF000BB0C8 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD82ABD75AF000BB0C8 /* CardItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEFF7BC62ABD6C92000BB0C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CEFF7BD02ABD70EE000BB0C8 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		CEFF7BD32ABD7188000BB0C8 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		CEFF7BD82ABD75AF000BB0C8 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +61,15 @@
 		CEFF7BBE2ABD6C90000BB0C8 /* AssignmentJosipDomazet */ = {
 			isa = PBXGroup;
 			children = (
+				CEFF7BD72ABD7583000BB0C8 /* model */,
+				CEFF7BD22ABD7166000BB0C8 /* repository */,
+				CEFF7BCF2ABD70A9000BB0C8 /* viewmodel */,
 				CEFF7BBF2ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift */,
 				CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */,
 				CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */,
 				CEFF7BC52ABD6C92000BB0C8 /* Preview Content */,
+				CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */,
+				CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */,
 			);
 			path = AssignmentJosipDomazet;
 			sourceTree = "<group>";
@@ -65,6 +80,30 @@
 				CEFF7BC62ABD6C92000BB0C8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CEFF7BCF2ABD70A9000BB0C8 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				CEFF7BD02ABD70EE000BB0C8 /* CardViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		CEFF7BD22ABD7166000BB0C8 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				CEFF7BD32ABD7188000BB0C8 /* CardRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		CEFF7BD72ABD7583000BB0C8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				CEFF7BD82ABD75AF000BB0C8 /* CardItem.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFF7BC72ABD6C92000BB0C8 /* Preview Assets.xcassets in Resources */,
+				CEFF7BCE2ABD6F5A000BB0C8 /* .gitignore in Resources */,
 				CEFF7BC42ABD6C92000BB0C8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +178,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */,
+				CEFF7BD42ABD7188000BB0C8 /* CardRepository.swift in Sources */,
+				CEFF7BD92ABD75AF000BB0C8 /* CardItem.swift in Sources */,
+				CEFF7BD62ABD71DE000BB0C8 /* ViewState.swift in Sources */,
 				CEFF7BC02ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift in Sources */,
+				CEFF7BD12ABD70EE000BB0C8 /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
