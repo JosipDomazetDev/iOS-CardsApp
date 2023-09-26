@@ -2,17 +2,18 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var viewModel: ItemViewModel
-    @State private var isShowingSettings = false
-
+    @AppStorage("apiURL") private var apiURL = AppConstants.apiURL
+    @AppStorage("showImages") private var showImages = true
+    
     init(viewModel: ItemViewModel) {
         self.viewModel = viewModel
     }
-
+    
     func errorWidget(_ errorMessage: String) -> Text {
         print(errorMessage)
         return Text("Error: \(errorMessage)")
     }
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -28,8 +29,28 @@ struct ContentView: View {
                     List(items, id: \.id) { item in
                         NavigationLink(destination: ItemDetailsView(item: item)) {
                             HStack {
-                                if let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
-                                    AsyncImage(url: imageUrl)
+                                if showImages, let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
+                                    AsyncImage(url: imageUrl) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            ProgressView()
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(10)
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(10)
+                                        case .failure:
+                                            Image(systemName: "photo")
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(10)
+                                        @unknown default:
+                                            EmptyView()
+                                        }
+                                    }
+                                } else {
+                                    Image(systemName: "photo")
                                         .frame(width: 50, height: 50)
                                         .cornerRadius(10)
                                 }
@@ -49,21 +70,28 @@ struct ContentView: View {
             .navigationBarTitle("Item List")
             .navigationBarItems(
                 trailing: Button(action: {
-                    isShowingSettings.toggle()
+                    openAppSettings()
                 }) {
                     Image(systemName: "gear")
                 }
             )
         }
         .onAppear {
-            viewModel.fetchItems()
+            viewModel.fetchItems(url: apiURL)
         }
         .refreshable {
-            viewModel.reloadItems()
+            viewModel.reloadItems(url: apiURL)
         }
-        .sheet(isPresented: $isShowingSettings) {
-            SettingsView(viewModel: viewModel)
+        .onChange(of: apiURL) { _ in
+            viewModel.reloadItems(url: apiURL)
         }
+    }
+}
+
+
+private func openAppSettings() {
+    if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+        UIApplication.shared.open(settingsUrl)
     }
 }
 

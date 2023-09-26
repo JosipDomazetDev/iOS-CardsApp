@@ -8,8 +8,8 @@
 import Foundation
 
 class ItemRepository {
-    func fetchItems(completion: @escaping ([Item]?, Error?) -> Void) {
-        guard let apiURL = URL(string: AppConstants.apiURL) else {
+    func fetchItems(url : String, completion: @escaping ([Item]?, Error?) -> Void) {
+        guard let apiURL = URL(string: url) else {
             completion(nil, (NSError(domain: "AppErrorDomain", code: 0, userInfo: nil)))
             return
         }   

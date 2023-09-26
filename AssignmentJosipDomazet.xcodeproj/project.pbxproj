@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3B66362AC2B87E00C8C590 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B66352AC2B87E00C8C590 /* AppConstants.swift */; };
+		CE3B663B2AC2C44800C8C590 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE3B663A2AC2C44800C8C590 /* Settings.bundle */; };
 		CEFF7BC02ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BBF2ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift */; };
 		CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */; };
 		CEFF7BC42ABD6C92000BB0C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */; };
@@ -20,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE3B66352AC2B87E00C8C590 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		CE3B66392AC2BBB000C8C590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE3B663A2AC2C44800C8C590 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CEFF7BBC2ABD6C90000BB0C8 /* AssignmentJosipDomazet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentJosipDomazet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFF7BBF2ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentJosipDomazetApp.swift; sourceTree = "<group>"; };
 		CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		CEFF7BBE2ABD6C90000BB0C8 /* AssignmentJosipDomazet */ = {
 			isa = PBXGroup;
 			children = (
+				CE3B66392AC2BBB000C8C590 /* Info.plist */,
 				CEFF7BD72ABD7583000BB0C8 /* model */,
 				CEFF7BD22ABD7166000BB0C8 /* repository */,
 				CEFF7BCF2ABD70A9000BB0C8 /* viewmodel */,
@@ -72,6 +78,8 @@
 				CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */,
 				CEFF7BC52ABD6C92000BB0C8 /* Preview Content */,
 				CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */,
+				CE3B66352AC2B87E00C8C590 /* AppConstants.swift */,
+				CE3B663A2AC2C44800C8C590 /* Settings.bundle */,
 			);
 			path = AssignmentJosipDomazet;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3B663B2AC2C44800C8C590 /* Settings.bundle in Resources */,
 				CEFF7BC72ABD6C92000BB0C8 /* Preview Assets.xcassets in Resources */,
 				CEFF7BCE2ABD6F5A000BB0C8 /* .gitignore in Resources */,
 				CEFF7BC42ABD6C92000BB0C8 /* Assets.xcassets in Resources */,
@@ -181,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */,
+				CE3B66362AC2B87E00C8C590 /* AppConstants.swift in Sources */,
 				CEFF7BD42ABD7188000BB0C8 /* ItemRepository.swift in Sources */,
 				CEFF7BD92ABD75AF000BB0C8 /* Item.swift in Sources */,
 				CEFF7BDB2ABDBE25000BB0C8 /* DetailView.swift in Sources */,
@@ -317,6 +327,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AssignmentJosipDomazet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssignmentJosipDomazet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,6 +356,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AssignmentJosipDomazet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssignmentJosipDomazet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

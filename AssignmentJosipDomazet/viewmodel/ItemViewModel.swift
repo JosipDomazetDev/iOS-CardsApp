@@ -16,10 +16,10 @@ class ItemViewModel: ObservableObject {
         self.repository = repository
     }
     
-    func fetchItems() {
+    func fetchItems(url : String) {
         viewState = .LOADING
         
-        repository.fetchItems{ [weak self] items, error in
+        repository.fetchItems(url: url){[weak self] items, error in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 
@@ -41,7 +41,7 @@ class ItemViewModel: ObservableObject {
 
  
      
-    func reloadItems() {
-        self.fetchItems()
+    func reloadItems(url : String) {
+        self.fetchItems(url: url)
     }
 }
