@@ -10,7 +10,7 @@ import Foundation
 struct Item: Identifiable, Codable, Equatable {
     let id: String
     let title: String
-    let description: String
+    let description: String?
     let imageUrl: String?
 
     

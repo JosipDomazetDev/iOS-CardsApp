@@ -14,6 +14,92 @@ struct ContentView: View {
         return Text("Error: \(errorMessage)")
     }
     
+    func createListView(items: [Item]) -> some View {
+        List(items, id: \.id) { item in
+            NavigationLink(destination: ItemDetailsView(item: item)) {
+                
+                if (item.id == items.first?.id){
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                                .font(.headline)
+                            
+                            Text("\(item.id)")
+                                .font(.system(size: 10))
+                        }
+                        
+                        if showImages, let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
+                            Spacer() // Push AsyncImage to the right edge
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 50, height: 50)
+                                        .cornerRadius(10)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 100)
+                                    
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .frame(width: 50, height: 50)
+                                        .cornerRadius(10)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }.padding(8)
+                        } else {
+                            Image(systemName: "photo")
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(10)
+                                .padding(8)
+                        }
+                    }
+
+                }else{
+                    
+                    HStack {
+                        if showImages, let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 50, height: 50)
+                                        .cornerRadius(10)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50)
+                
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .frame(width: 50, height: 50)
+                                        .cornerRadius(10)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }.padding(8)
+                        } else {
+                            Image(systemName: "photo")
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(10).padding(8)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                                .font(.headline)
+                            
+                            Text("\(item.id)")
+                                .font(.system(size: 10))
+                        }
+                    }
+                }}
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,45 +112,7 @@ struct ContentView: View {
                     errorWidget(errorMessage)
                         .foregroundColor(.red)
                 case .SUCCESS(let items):
-                    List(items, id: \.id) { item in
-                        NavigationLink(destination: ItemDetailsView(item: item)) {
-                            HStack {
-                                if showImages, let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
-                                    AsyncImage(url: imageUrl) { phase in
-                                        switch phase {
-                                        case .empty:
-                                            ProgressView()
-                                                .frame(width: 50, height: 50)
-                                                .cornerRadius(10)
-                                        case .success(let image):
-                                            image
-                                                .resizable()
-                                                .frame(width: 50, height: 50)
-                                                .cornerRadius(10)
-                                        case .failure:
-                                            Image(systemName: "photo")
-                                                .frame(width: 50, height: 50)
-                                                .cornerRadius(10)
-                                        @unknown default:
-                                            EmptyView()
-                                        }
-                                    }
-                                } else {
-                                    Image(systemName: "photo")
-                                        .frame(width: 50, height: 50)
-                                        .cornerRadius(10)
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text(item.title)
-                                        .font(.headline)
-                                    
-                                    Text(item.id)
-                                        .font(.subheadline)
-                                }
-                            }
-                        }
-                    }
+                    createListView(items: items)
                 }
             }
             .navigationBarTitle("Item List")

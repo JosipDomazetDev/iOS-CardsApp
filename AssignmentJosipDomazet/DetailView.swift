@@ -57,8 +57,16 @@ struct ItemDetailsView: View {
                 .font(.system(size: 9))
                 .foregroundColor(.gray)
             
-            Text(item.description)
-                .font(.body).padding(8)
+            if let description = item.description {
+                Text(description)
+                    .font(.body)
+                    .padding(8)
+            } else {
+                Text("Description not available")
+                    .font(.body)
+                    .padding(8)
+            }
+
             
             if let imageUrl = item.imageUrl {
                 Button(action: {
