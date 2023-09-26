@@ -66,7 +66,7 @@ struct ItemDetailsView: View {
                     .font(.body)
                     .padding(8)
             }
-
+            
             
             if let imageUrl = item.imageUrl {
                 Button(action: {

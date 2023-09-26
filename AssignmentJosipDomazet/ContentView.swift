@@ -57,7 +57,7 @@ struct ContentView: View {
                                 .padding(8)
                         }
                     }
-
+                    
                 }else{
                     
                     HStack {
@@ -73,7 +73,7 @@ struct ContentView: View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 50)
-                
+                                    
                                 case .failure:
                                     Image(systemName: "photo")
                                         .frame(width: 50, height: 50)
