@@ -12,7 +12,7 @@ class ItemRepository {
         guard let apiURL = URL(string: "https://api.magicthegathering.io/v1/cards") else {
             completion(nil, (NSError(domain: "AppErrorDomain", code: 0, userInfo: nil)))
             return
-        }
+        }   
         
         URLSession.shared.dataTask(with: apiURL) { data, response, error in
             if let error = error {
