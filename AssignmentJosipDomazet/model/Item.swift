@@ -29,3 +29,4 @@ struct Response: Codable {
         case items = "cards"
     }
 }
+

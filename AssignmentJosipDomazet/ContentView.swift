@@ -2,16 +2,17 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var viewModel: ItemViewModel
-    
+    @State private var isShowingSettings = false
+
     init(viewModel: ItemViewModel) {
         self.viewModel = viewModel
     }
-    
+
     func errorWidget(_ errorMessage: String) -> Text {
         print(errorMessage)
         return Text("Error: \(errorMessage)")
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -26,18 +27,42 @@ struct ContentView: View {
                 case .SUCCESS(let items):
                     List(items, id: \.id) { item in
                         NavigationLink(destination: ItemDetailsView(item: item)) {
-                            Text(item.title)
+                            HStack {
+                                if let imageUrlString = item.imageUrl, let imageUrl = URL(string: imageUrlString) {
+                                    AsyncImage(url: imageUrl)
+                                        .frame(width: 50, height: 50)
+                                        .cornerRadius(10)
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Text(item.title)
+                                        .font(.headline)
+                                    
+                                    Text(item.id)
+                                        .font(.subheadline)
+                                }
+                            }
                         }
                     }
                 }
             }
             .navigationBarTitle("Item List")
+            .navigationBarItems(
+                trailing: Button(action: {
+                    isShowingSettings.toggle()
+                }) {
+                    Image(systemName: "gear")
+                }
+            )
         }
         .onAppear {
             viewModel.fetchItems()
         }
         .refreshable {
             viewModel.reloadItems()
+        }
+        .sheet(isPresented: $isShowingSettings) {
+            SettingsView(viewModel: viewModel)
         }
     }
 }

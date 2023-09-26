@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct AssignmentJosipDomazetApp: App {
+    let itemViewModel = ItemViewModel(repository: ItemRepository())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ItemViewModel(repository: ItemRepository()))
+            ContentView(viewModel: itemViewModel)
         }
     }
 }

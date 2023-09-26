@@ -9,7 +9,7 @@ import Foundation
 
 class ItemRepository {
     func fetchItems(completion: @escaping ([Item]?, Error?) -> Void) {
-        guard let apiURL = URL(string: "https://api.magicthegathering.io/v1/cards") else {
+        guard let apiURL = URL(string: AppConstants.apiURL) else {
             completion(nil, (NSError(domain: "AppErrorDomain", code: 0, userInfo: nil)))
             return
         }   
