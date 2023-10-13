@@ -1,6 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    // TODO: maybe append some hook to this conext to retrieve the data on change?
+
+//     @FetchRequest(
+//         sortDescriptors: [NSSortDescriptor(keyPath: \Item.name, ascending: true)],
+//         animation: .default
+//     )
+//     private var items: FetchedResults<Item>
+
     @ObservedObject private var viewModel: ItemViewModel
     @AppStorage("apiURL") private var apiURL = AppConstants.apiURL
     @AppStorage("showImages") private var showImages = true
