@@ -13,7 +13,7 @@ struct AssignmentJosipDomazetApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: itemViewModel)
+            ContentView(viewModel: itemViewModel).environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
         }
     }
 }

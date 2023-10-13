@@ -9,9 +9,10 @@ import Foundation
 
 class ItemViewModel: ObservableObject {
     @Published var viewState: ViewState<[Item]> = .INITIAL
+    // TODO: Maybe insert a variable just for the list of items for direct updtates
 
     private let repository: ItemRepository
-    
+
     init(repository: ItemRepository) {
         self.repository = repository
     }
@@ -33,15 +34,25 @@ class ItemViewModel: ObservableObject {
                     return
                 }
                 
-                
                 self.viewState = .SUCCESS(items.sorted { $0.title < $1.title })
             }
         }
     }
 
- 
-     
-    func reloadItems(url : String) {
-        self.fetchItems(url: url)
+    func retrieveItems() {
+        viewState = .LOADING
+
+        repository.getItems { items in
+            DispatchQueue.main.async {
+                self.viewState = .SUCCESS(items.sorted { $0.title < $1.title })
+            }
+        }
+    }
+
+
+    func reloadItems(url: String) {
+        // Clear data before fetching
+        repository.clearData()
+        fetchItems(url: url)
     }
 }
