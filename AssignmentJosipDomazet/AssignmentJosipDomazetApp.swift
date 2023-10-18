@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct AssignmentJosipDomazetApp: App {
-    let itemViewModel = ItemViewModel(repository: ItemRepository())
+    let itemViewModel = ItemViewModel(repository: ItemRepository(coreDataManager: CoreDataManager.shared))
     
     var body: some Scene {
         WindowGroup {

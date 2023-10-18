@@ -30,10 +30,10 @@ struct ContentView: View {
                 if (item.id == items.first?.id){
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(item.title)
+                            Text(item.title ?? "")
                                 .font(.headline)
                             
-                            Text("\(item.id)")
+                            Text("\(item.id ?? "")")
                                 .font(.system(size: 10))
                         }
                         
@@ -98,10 +98,10 @@ struct ContentView: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text(item.title)
+                            Text(item.title ?? "")
                                 .font(.headline)
                             
-                            Text("\(item.id)")
+                            Text("\(item.id ?? "")")
                                 .font(.system(size: 10))
                         }
                     }
@@ -134,7 +134,7 @@ struct ContentView: View {
             )
         }
         .onAppear {
-            viewModel.fetchItems(url: apiURL)
+            viewModel.retrieveItems(url: apiURL, preventRecursion: false)
         }
         .refreshable {
             viewModel.reloadItems(url: apiURL)
@@ -154,6 +154,6 @@ private func openAppSettings() {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: ItemViewModel(repository: ItemRepository()))
+        ContentView(viewModel: ItemViewModel(repository: ItemRepository(coreDataManager: CoreDataManager.shared)))
     }
 }

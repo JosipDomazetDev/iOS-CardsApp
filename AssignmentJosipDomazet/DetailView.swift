@@ -21,7 +21,7 @@ struct ItemDetailsView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 300)
                                 .overlay(
-                                    Text(item.title)
+                                    Text(item.title ?? "")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                         .padding(8)
@@ -43,7 +43,7 @@ struct ItemDetailsView: View {
                     }
                 } else {
                     
-                    Text(item.title)
+                    Text(item.title ?? "")
                         .font(.headline)
                     
                     Text("Images not displayed")
@@ -53,7 +53,7 @@ struct ItemDetailsView: View {
                 
             }
             
-            Text("ID: \(item.id)")
+            Text("ID: \(item.id ?? "")")
                 .font(.system(size: 9))
                 .foregroundColor(.gray)
             

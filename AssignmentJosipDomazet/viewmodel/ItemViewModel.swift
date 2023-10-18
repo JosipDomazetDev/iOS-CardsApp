@@ -9,10 +9,8 @@ import Foundation
 
 class ItemViewModel: ObservableObject {
     @Published var viewState: ViewState<[Item]> = .INITIAL
-    // TODO: Maybe insert a variable just for the list of items for direct updtates
-
     private let repository: ItemRepository
-
+    
     init(repository: ItemRepository) {
         self.repository = repository
     }
@@ -34,22 +32,24 @@ class ItemViewModel: ObservableObject {
                     return
                 }
                 
-                self.viewState = .SUCCESS(items.sorted { $0.title < $1.title })
+                self.retrieveItems(url: url, preventRecursion: true)
+                // Completing with items but they are not used to fulfill the "loaded solely from the database" constraint
+                // self.viewState = .SUCCESS(items.sorted { ($0.title ?? "") < ($1.title ?? "") })
             }
         }
     }
-
-    func retrieveItems() {
-        viewState = .LOADING
-
-        repository.getItems { items in
-            DispatchQueue.main.async {
-                self.viewState = .SUCCESS(items.sorted { $0.title < $1.title })
-            }
+    
+    func retrieveItems(url : String, preventRecursion: Bool) {
+        self.viewState = .LOADING
+        let retrievedItems: [Item] = repository.retrieveItems()
+        self.viewState = .SUCCESS(retrievedItems)
+        
+        if retrievedItems.isEmpty && !preventRecursion {
+            self.fetchItems(url: url)
         }
     }
-
-
+    
+    
     func reloadItems(url: String) {
         // Clear data before fetching
         repository.clearData()

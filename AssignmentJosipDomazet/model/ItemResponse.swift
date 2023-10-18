@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item: Identifiable, Codable, Equatable {
+struct ItemResponse: Identifiable, Codable, Equatable {
     let id: String
     let title: String
     let description: String?
@@ -23,10 +23,9 @@ struct Item: Identifiable, Codable, Equatable {
 }
 
 struct Response: Codable {
-    let items: [Item]
+    let items: [ItemResponse]
     
     enum CodingKeys: String, CodingKey {
         case items = "cards"
     }
 }
-

@@ -14,30 +14,14 @@ class ItemRepository {
         self.coreDataManager = coreDataManager
     }
 
-   func saveItems(_ items: [Item]) {
-        coreDataManager.context.merge(items)
 
-        do {
-            try coreDataManager.context.save()
-        } catch {
-            fatalError("Failed to save items: \(error.localizedDescription)")
-        }
+    func retrieveItems() -> [Item] {
+        return coreDataManager.getAllItems()
     }
-
-    func retrieveItems(completion: @escaping ([Item]?, Error?) -> Void) {
-        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-
-        coreDataManager.context.perform {
-            do {
-                let items = try coreDataManager.context.fetch(fetchRequest)
-                completion(items, nil)
-            } catch {
-                completion(nil, error)
-            }
-        }
-    }
+    
 
     func fetchItems(url : String, completion: @escaping ([Item]?, Error?) -> Void) {
+        print("Fetching items")
         guard let apiURL = URL(string: url) else {
             completion(nil, (NSError(domain: "AppErrorDomain", code: 0, userInfo: nil)))
             return
@@ -58,15 +42,21 @@ class ItemRepository {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
                 let items = response.items
-
-                self.saveItems(items)
-
-                // TODO complete with SUCCESS in some manner
-                // completion(items, nil)
+                
+         
+                print("Got \(items.count) items")
+                let successfullyInsertedItems: [Item] = self.coreDataManager.insertResponseItems(items: items)
+                
+                completion(successfullyInsertedItems, nil)
             } catch {
                 debugPrint(error)
                 completion(nil, error)
             }
         }.resume()
     }
+    
+    func clearData(){
+        return coreDataManager.clearData()
+    }
+    
 }

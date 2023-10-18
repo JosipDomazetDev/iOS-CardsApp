@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CE3B66362AC2B87E00C8C590 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B66352AC2B87E00C8C590 /* AppConstants.swift */; };
 		CE3B663B2AC2C44800C8C590 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE3B663A2AC2C44800C8C590 /* Settings.bundle */; };
+		CE5EF5012ADFF27900A5BB98 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF5002ADFF27900A5BB98 /* CoreDataManager.swift */; };
+		CE5EF5032ADFFBF000A5BB98 /* ItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF5022ADFFBF000A5BB98 /* ItemResponse.swift */; };
+		CE5EF50C2AE00DDA00A5BB98 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF50A2AE00DDA00A5BB98 /* AppDataModel.xcdatamodeld */; };
 		CEFF7BC02ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BBF2ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift */; };
 		CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */; };
 		CEFF7BC42ABD6C92000BB0C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEFF7BC32ABD6C92000BB0C8 /* Assets.xcassets */; };
@@ -17,7 +20,6 @@
 		CEFF7BD12ABD70EE000BB0C8 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD02ABD70EE000BB0C8 /* ItemViewModel.swift */; };
 		CEFF7BD42ABD7188000BB0C8 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD32ABD7188000BB0C8 /* ItemRepository.swift */; };
 		CEFF7BD62ABD71DE000BB0C8 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */; };
-		CEFF7BD92ABD75AF000BB0C8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BD82ABD75AF000BB0C8 /* Item.swift */; };
 		CEFF7BDB2ABDBE25000BB0C8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF7BDA2ABDBE25000BB0C8 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,9 @@
 		CE3B66352AC2B87E00C8C590 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		CE3B66392AC2BBB000C8C590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE3B663A2AC2C44800C8C590 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CE5EF5002ADFF27900A5BB98 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE5EF5022ADFFBF000A5BB98 /* ItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemResponse.swift; sourceTree = "<group>"; };
+		CE5EF50B2AE00DDA00A5BB98 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CEFF7BBC2ABD6C90000BB0C8 /* AssignmentJosipDomazet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentJosipDomazet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFF7BBF2ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentJosipDomazetApp.swift; sourceTree = "<group>"; };
 		CEFF7BC12ABD6C90000BB0C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,7 +39,6 @@
 		CEFF7BD02ABD70EE000BB0C8 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		CEFF7BD32ABD7188000BB0C8 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		CEFF7BD82ABD75AF000BB0C8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CEFF7BDA2ABDBE25000BB0C8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +84,7 @@
 				CEFF7BCD2ABD6F5A000BB0C8 /* .gitignore */,
 				CE3B66352AC2B87E00C8C590 /* AppConstants.swift */,
 				CE3B663A2AC2C44800C8C590 /* Settings.bundle */,
+				CE5EF50A2AE00DDA00A5BB98 /* AppDataModel.xcdatamodeld */,
 			);
 			path = AssignmentJosipDomazet;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CEFF7BD32ABD7188000BB0C8 /* ItemRepository.swift */,
+				CE5EF5002ADFF27900A5BB98 /* CoreDataManager.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -112,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				CEFF7BD52ABD71DE000BB0C8 /* ViewState.swift */,
-				CEFF7BD82ABD75AF000BB0C8 /* Item.swift */,
+				CE5EF5022ADFFBF000A5BB98 /* ItemResponse.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -192,11 +198,13 @@
 				CEFF7BC22ABD6C90000BB0C8 /* ContentView.swift in Sources */,
 				CE3B66362AC2B87E00C8C590 /* AppConstants.swift in Sources */,
 				CEFF7BD42ABD7188000BB0C8 /* ItemRepository.swift in Sources */,
-				CEFF7BD92ABD75AF000BB0C8 /* Item.swift in Sources */,
 				CEFF7BDB2ABDBE25000BB0C8 /* DetailView.swift in Sources */,
 				CEFF7BD62ABD71DE000BB0C8 /* ViewState.swift in Sources */,
+				CE5EF50C2AE00DDA00A5BB98 /* AppDataModel.xcdatamodeld in Sources */,
 				CEFF7BC02ABD6C90000BB0C8 /* AssignmentJosipDomazetApp.swift in Sources */,
 				CEFF7BD12ABD70EE000BB0C8 /* ItemViewModel.swift in Sources */,
+				CE5EF5012ADFF27900A5BB98 /* CoreDataManager.swift in Sources */,
+				CE5EF5032ADFFBF000A5BB98 /* ItemResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +405,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE5EF50A2AE00DDA00A5BB98 /* AppDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE5EF50B2AE00DDA00A5BB98 /* AppDataModel.xcdatamodel */,
+			);
+			currentVersion = CE5EF50B2AE00DDA00A5BB98 /* AppDataModel.xcdatamodel */;
+			path = AppDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CEFF7BB42ABD6C90000BB0C8 /* Project object */;
 }
