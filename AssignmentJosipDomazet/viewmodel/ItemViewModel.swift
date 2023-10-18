@@ -42,7 +42,7 @@ class ItemViewModel: ObservableObject {
     func retrieveItems(url : String, preventRecursion: Bool) {
         self.viewState = .LOADING
         let retrievedItems: [Item] = repository.retrieveItems()
-        self.viewState = .SUCCESS(retrievedItems)
+        self.viewState =  .SUCCESS(retrievedItems.sorted { ($0.title ?? "") < ($1.title ?? "") })
         
         if retrievedItems.isEmpty && !preventRecursion {
             self.fetchItems(url: url)
@@ -52,7 +52,6 @@ class ItemViewModel: ObservableObject {
     
     func reloadItems(url: String) {
         // Clear data before fetching
-        repository.clearData()
         fetchItems(url: url)
     }
 }

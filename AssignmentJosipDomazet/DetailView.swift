@@ -57,7 +57,7 @@ struct ItemDetailsView: View {
                 .font(.system(size: 9))
                 .foregroundColor(.gray)
             
-            if let description = item.description {
+            if let description = item.desc {
                 Text(description)
                     .font(.body)
                     .padding(8)
