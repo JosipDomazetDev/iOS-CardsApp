@@ -52,6 +52,7 @@ class ItemViewModel: ObservableObject {
     
     func reloadItems(url: String) {
         // Clear data before fetching
+        repository.clearData()
         fetchItems(url: url)
     }
 }
