@@ -42,12 +42,14 @@ class ItemRepository {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
                 let items = response.items
-                
-         
                 print("Got \(items.count) items")
-                let successfullyInsertedItems: [Item] = self.coreDataManager.insertResponseItems(items: items)
-                
-                completion(successfullyInsertedItems, nil)
+         
+                self.coreDataManager.viewContext.perform {
+                    let successfullyInsertedItems: [Item] = self.coreDataManager.insertResponseItems(items: items)
+                    
+                    completion(successfullyInsertedItems, nil)
+                }
+
             } catch {
                 debugPrint(error)
                 completion(nil, error)

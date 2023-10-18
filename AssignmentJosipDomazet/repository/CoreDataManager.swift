@@ -82,8 +82,10 @@ class CoreDataManager {
         var successfullyInsertedItems: [Item] = []
 
         items.forEach { item in
-            if let insertedItem = insertItem(item: item) {
-                successfullyInsertedItems.append(insertedItem)
+            if !item.id.isEmpty {
+                if let insertedItem = insertItem(item: item) {
+                    successfullyInsertedItems.append(insertedItem)
+                }
             }
         }
 
