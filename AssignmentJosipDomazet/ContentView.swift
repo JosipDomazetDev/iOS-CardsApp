@@ -124,7 +124,7 @@ struct ContentView: View {
                     createListView(items: items)
                 }
             }
-            .navigationBarTitle("Item List")
+            .navigationBarTitle("Cards")
             .navigationBarItems(
                 trailing: Button(action: {
                     openAppSettings()

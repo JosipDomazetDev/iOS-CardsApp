@@ -42,7 +42,18 @@ class ItemViewModel: ObservableObject {
     func retrieveItems(url : String, preventRecursion: Bool) {
         self.viewState = .LOADING
         let retrievedItems: [Item] = repository.retrieveItems()
-        self.viewState =  .SUCCESS(retrievedItems.sorted { ($0.title ?? "") < ($1.title ?? "") })
+        
+        let itemsWithImage = retrievedItems.filter { item in
+            if let imageUrl = item.imageUrl, !imageUrl.isEmpty {
+                print(imageUrl)
+                return true
+            }
+            return false
+        }
+        
+        self.viewState =  .SUCCESS(itemsWithImage.sorted { ($0.title ?? "") < ($1.title ?? "") })
+    
+        
         
         if retrievedItems.isEmpty && !preventRecursion {
             self.fetchItems(url: url)

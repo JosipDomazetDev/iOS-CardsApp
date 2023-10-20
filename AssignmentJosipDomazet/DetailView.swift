@@ -81,7 +81,7 @@ struct ItemDetailsView: View {
             }
         }
         .padding(16)
-        .navigationBarTitle("Item Details")
+        .navigationBarTitle("Card Overview")
         
     }
 }
